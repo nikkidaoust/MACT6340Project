@@ -5,6 +5,14 @@ html {
     box-sizing: inherit;
 }
 
+
+
+body{
+        font-family: "Poppins", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+
 div{
-    border: 1px solid red;
+    border: 1px solid rgb(255, 255, 255);
 }
