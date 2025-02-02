@@ -16,3 +16,17 @@ body{
 div{
     border: 1px solid rgb(255, 255, 255);
 }
+
+/* Full-screen video background section */
+.video-background {
+    position: relative;
+    width: 100%;
+    height: 80vh; /* You can adjust this if you want the video to take more or less height */
+    overflow: hidden;
+    margin-top: 0; /* Removed margin-top to reduce whitespace above the video */
+}
+
+header {
+    padding-bottom: 0; /* Removes some bottom padding in the header */
+    margin-bottom: 0; /* Ensures no space below the header */
+}
