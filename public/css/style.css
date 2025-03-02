@@ -73,3 +73,7 @@ header {
 .featurette .col-md-7 {
     padding-left: 90px; /* Adjust as needed */
 }
+
+.spacer {
+  min-height: 75px;
+}
