@@ -7,7 +7,7 @@ let data = ["Project 1", "Project 2", "Project 3"];
 let projects = [];
 
 const app = express();
-const port = 3000;
+const port = 3001;
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.static("public"));
@@ -58,7 +58,7 @@ app.use(async (err, req, res, next) => {
   msg = err.message;
   if (msg != "No project with that ID") {
     msg =
-      "There was an internal error. Apologies. We are working on cleaning up the mess.";
+      "There was an internal error. We are working on fixing it.";
   }
   res.render("error.ejs", { msg: msg });
 });
