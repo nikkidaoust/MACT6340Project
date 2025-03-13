@@ -22,13 +22,15 @@
             <div class="spacer"></div>
             </div>
             <div>Projects</div>
-            <% projectArray.forEach((item, index) => { %>
-            <div>
-                <a href='/project/<%= index + 1 %>'><%= item %></a>
-            </div>
-            <% }); %>
+            <% projectArray.forEach((item, index) => {%>
+                <div class="col-10">
+                  <%- include('projectCard', {image: item.img_url, name: item.project_name, ident: item.id}); %>
+                </div>
+                <% }); %>
         </div>
             <script type="module" src="./js/index.js"></script>
+
+       
     </body>
 
     <footer>
