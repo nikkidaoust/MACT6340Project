@@ -19,9 +19,9 @@
         .video-background {
             position: relative;
             width: 100%;
-            height: 80vh; /* Adjust to control how much of the screen the video takes */
+            height: 80vh;
             overflow: hidden;
-            margin-top: 10px; /* To avoid overlap with header */
+            margin-top: 10px;
         }
 
         .video-background video {
@@ -34,7 +34,6 @@
             object-fit: cover;
         }
 
-        /* Content to overlay on top of the video */
         .content {
             position: absolute;
             top: 50%;
@@ -44,13 +43,24 @@
             text-align: center;
             z-index: 1;
             font-size: 2rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Optional: adds shadow to text for better readability */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
 
-        /* Optional: Style the header container to stay fixed at the top */
         header {
             position: relative;
             z-index: 2;
+        }
+
+        /* Fade-in scroll styles */
+        .fadein-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .fadein-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -58,50 +68,57 @@
 <body>
 
     <!-- Header -->
-
-        <%- include('header'); %>
+    <%- include('header'); %>
 
     <!-- Video Section -->
     <div class="video-background">
-        <!-- Video element with autoplay, loop, and muted -->
         <video autoplay loop muted>
             <source src="images/wave.mp4" type="video/mp4">
             <source src="images/wave.webm" type="video/webm">
             Your browser does not support the video tag.
         </video>
-
-        <!-- Content on top of the video -->
         <div class="content">
             <h1>Welcome!</h1>
             <p>Generative Art NFT Project Collection</p>
         </div>
     </div>
 
-    <!-- Main Content Area -->
-    <div class="container">
+    <!-- Main Content Area
+    <div class="container fadein-scroll">
         <p>Note to add more text here</p>
-    </div>
+    </div> -->
 
-
-    
     <hr class="featurette-divider">
 
-    <div id="About Me" class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading fw-normal lh-1">Nikki<span class="text-muted">Daoust</span></h2>
-        <p class="lead">Creative marketing communications specialist with a passion for graphic design and art.</p>
-      </div>
-      <div class="col-md-5">
-        <img class="me-auto" src="./images/CircleHeadshot.png" height="500" role="img" alt="">
-
-      </div>
+    <div id="About Me" class="row featurette fadein-scroll">
+        <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1 fadein-scroll">Nikki<span class="text-muted">Daoust</span></h2>
+            <p class="lead fadein-scroll">Creative marketing communications specialist with a passion for graphic design and art.</p>
+        </div>
+        <div class="col-md-5">
+            <img class="me-auto" src="./images/CircleHeadshot.png" height="500" role="img" alt="self portrait">
+        </div>
     </div>
 
+    <hr class="featurette-divider">
 
-
-    <!-- /END THE FEATURETTES -->
-
-
+    <div class="container fadein-scroll">
+        <!-- Featured project area -->
+        <section>
+            <div class="px-4 my-5 text-center border-bottom">
+                <h1 class="featurette-heading fw-normal lh-1 fadein-scroll">Featured Project: <span class="text-muted">The Wiggleverse</span></h2>
+                <div class="col-lg-6 mx-auto">
+                  <p class="lead mb-4">A playful series of interconnected stick-figure characters that bounce amd sway using Verlet physics. Each figure dances to its own invisible rhythm while maintaining elastic bonds—an ode to the quirky, unpredictable energy of human connection in digital space.</p>
+                  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+                    <button type="button" class="btn btn-secondary">Mint</button>
+                  </div>
+                </div>
+                <div class="overflow-hidden" style="max-height: 30vh;">
+                  <div class="container px-5">
+                    <img src="./images/wiggle.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="stick figures" width="700" height="500" loading="lazy">
+                  </div>
+                </div>
+              </div>
 
 
     <!-- Footer -->
@@ -109,7 +126,24 @@
         <%- include('footer'); %>
     </div>
 
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    <!-- Scroll fade-in script -->
+    <script>
+        const fadeEls = document.querySelectorAll('.fadein-scroll');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+
+        fadeEls.forEach(el => observer.observe(el));
+    </script>
+
     <script type="module" src="./js/index.js"></script>
 </body>
 

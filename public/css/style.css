@@ -13,9 +13,11 @@ body{
         font-style: normal;
       }
     
+  
 div{
     border: 0px solid rgb(255, 255, 255);
 }
+
 /* Full-screen video background section */
 .video-background {
     position: relative;
@@ -28,7 +30,6 @@ header {
     padding-bottom: 0; /* Removes some bottom padding in the header */
     margin-bottom: 0; /* Ensures no space below the header */
 }
-
 
 
 /* Featurettes
@@ -76,4 +77,24 @@ header {
 
 .spacer {
   min-height: 75px;
+}
+
+@keyframes fadeInAnimation {
+  /*for div fade-in */
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+card {
+  min-height: 400px;
+}
+
+.fadein {
+  animation: fadeInAnimation ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
